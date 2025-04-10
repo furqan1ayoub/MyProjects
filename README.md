@@ -22,10 +22,15 @@ A script for processing and formatting login data from a file. It extracts valid
 - **Usage**: Run `script1.py` with an input file named `100mLogins.txt`.
 
 ### 3. [Password Checker (CLI)](PasswordChecker(CLI)/README.md)
-A command-line tool for checking passwords. (Details can be added here if available.)
+A command-line tool for checking passwords. (Checks The strength of the Password ) 
+- IN FUTURE adding a feauture to check from leaked password - strength
 
 ## How to Use
 
 1. Clone this repository:
    ```bash
    git clone https://github.com/furqan1ayoub/MyProjects
+
+
+# License
+**This project is open-source and free to use. Feel free to modify it as needed.**
