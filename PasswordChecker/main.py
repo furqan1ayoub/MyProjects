@@ -58,7 +58,7 @@ def passwordChecker(user_password):
         #db-leaks checker
         leaked_db_check=leaked_db_checker(user_password)
         if not leaked_db_check:
-            print("PASSWORD NOT FOUND IN DATABASE LEAK \n but WE AREN'T SURE !!\n CROSS VERIFY FROM OTHER SOURCE")
+            print("\nPASSWORD NOT FOUND IN DATABASE LEAK\n but WE AREN'T SURE !!\n \n CROSS VERIFY FROM OTHER SOURCE")
     else:
         print("PASSWORD WEAK")
 
