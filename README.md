@@ -25,6 +25,27 @@ A script for processing and formatting login data from a file. It extracts valid
 A command-line tool for checking passwords. (Checks The strength of the Password ) 
 - IN FUTURE adding a feauture to check from leaked password - strength
 
+### 4. [Words Counter (CLI)](wordsCounter(CLI)/README.md)
+A command-line tool to analyze the occurrence of each word in a text file and identify the most frequently used words.
+
+- **Features**:
+  - Accepts a file as input using CLI arguments.
+  - Removes punctuation and converts words to lowercase for accurate counting.
+  - Displays word occurrences in the console.
+  - Option to save the results to a file in `.txt` or `.csv` format.
+  - Handles errors like missing files or invalid input gracefully.
+
+- **Usage**:
+  1. Run the script with the `-f` argument to specify the input file:
+     ```bash
+     python main.py -f filename.txt
+     ```
+  2. Follow the prompts to save the results if desired.
+- **Planned Features**:
+  - Display the word with the **highest occurrence** directly in the output.
+
+
+
 ## How to Use
 
 1. Clone this repository:
@@ -34,3 +55,6 @@ A command-line tool for checking passwords. (Checks The strength of the Password
 
 # License
 **This project is open-source and free to use. Feel free to modify it as needed.**
+
+# Created by 
+**Furqan Ayoub** - 💼 [LinkedIn](https://www.linkedin.com/in/furqan-ayoub-39a6a935b/)  
