@@ -4,13 +4,13 @@ This workspace contains various Python projects aimed at learning and experiment
 
 ## Projects
 
-### 1. [Directory Enumeration](Directory-enumeration/Directory-enumeration/README.md)
+### 1. [Dir Enumeration](DirProbe/README.md)
 A Python script for directory enumeration on web servers. It checks for the existence of specified directories and saves valid paths to a file.
 
 - **Features**:
   - Reads directory paths from a file.
   - Saves found paths to an output file.
-- **Usage**: Run `dirBuster.py` with a prepared `dirFile.txt`.
+- **Usage**: Run `dirBuster.py -u url.com -w wordlists.txt -o outputfile.txt` with a prepared default wordlists if you don't have one.
 
 ### 2. [Leaks Formatter](leaks-formatter/README.md)
 A script for processing and formatting login data from a file. It extracts valid entries and saves them in a clean, readable format.
