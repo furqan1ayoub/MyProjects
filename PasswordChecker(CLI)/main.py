@@ -51,9 +51,28 @@ def passwordChecker(user_password):
         and any(eachChar.isdigit() for eachChar in user_password)  # At least one digit
         
     ):
-        print("Password STRONG")
+        
+        print("Password length - STRONG")
+        print("CHECKING IN leaked 100million-password Wait.......")
+        time.sleep(1)
+        #db-leaks checker
+        leaked_db_check=leaked_db_checker(user_password)
+        if not leaked_db_check:
+            print("PASSWORD NOT FOUND IN DATABASE LEAK \n but WE AREN'T SURE !!\n CROSS VERIFY FROM OTHER SOURCE")
     else:
         print("PASSWORD WEAK")
 
+def leaked_db_checker(user_password):
+    try:
+        with open("10-million-password-list-top-10000.txt","r") as leaksFile:
+            #load into set for more fast 
+            leaked_passwords = set(line.strip() for line in leaksFile)
+            for eachLine in leaked_passwords:
+                if user_password == eachLine.strip():
+                    print("ALERT !!! \n LEAKED PASSWORD !!! \n TRY DIFFERENT !")
+                    return True
+            return False
+    except FileNotFoundError:print('FILE NOT FOUND BRO (10-million-passowrd-list-top-1000.txt) !')
+    except Exception as fe :print('ERROR - ',fe)
 if __name__ == "__main__":
     main()
