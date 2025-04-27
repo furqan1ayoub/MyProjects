@@ -23,5 +23,6 @@ def save_to_file(filename, content):
 
 # === RUN SCRIPT ===
 if __name__ == "__main__":
+    input_filenam=input("ENTER THE FILE-NAME ")
     output_name = input("ENTER OUTPUT FILE NAME (no extension): ") + ".txt"
-    logins_parser("100mLogins.txt", output_name)
+    logins_parser(input_filenam, output_name)

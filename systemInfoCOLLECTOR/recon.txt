@@ -1,0 +1,10 @@
+---------------------------------
+System: Windows
+Computer/Node Name: KernelPaniC
+Release: 11
+Version: 10.0.26100
+Machine: AMD64
+Processor: AMD64 Family 25 Model 80 Stepping 0, AuthenticAMD
+Architecture: 64bit
+username: furqan
+---------------------------------
