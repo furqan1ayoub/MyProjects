@@ -35,46 +35,50 @@ def folderEmpytDelete(path,forceDel,overwrite):
         try:
             if forceDel:
                 if overwrite:
-                    input1=input("ARE YOU USING AT YOUR OWN RESPOSNSIBILITY... - ")
-                    if input1 in ["yes","y","ye"]:
-                         isOverwritted=True
-                         for root,dirs,files in os.walk(path):
-                             for eachFile in files:
-                                 new_path = os.path.join(root,eachFile)
-                                 overwritee(new_path,eachFile)
-                    elif input1.lower() in ["no","n",""]:
-                        print("STOPPED THE OVERWRITING FUNCTION !")
-                    else:
-                        print("INVALID INPUT...")
-                else:
-                    print("NOT OVERWRITTEN !")
-                    isOverwritted=False
+                    while True:
+                        input1 = input("ARE YOU USING AT YOUR OWN RESPOSNSIBILITY... - ").lower()
+                        if input1 in ["yes", "y", "ye"]:
+                            isOverwritted = True
+                            for root, dirs, files in os.walk(path):
+                                for eachFile in files:
+                                    new_path = os.path.join(root, eachFile)
+                                    overwrite(new_path, eachFile)
+                            break
+                        elif input1 in ["no", "n", ""]:
+                            print("STOPPED THE OVERWRITING FUNCTION!")
+                            break
+                        else:
+                            print("INVALID INPUT...")
                 while True:
-                    confirmInput = input("Are you sure you want to delete?  y/n - ")
-                    if confirmInput.lower() in ["y","ye","yes"]:
+                    confirmInput = input("Are you sure you want to delete?  y/n - ").lower()
+                    if confirmInput in ["y", "ye", "yes"]:
                         print("DELETING.....")
                         time.sleep(0.5)
-                        shutil.rmtree(path) #alll
+                        shutil.rmtree(path)  # all
                         if isOverwritted:
                             print("1)changed content \n2)deleted the folder !! (hope used in your own env) .....")
                         break
-                    elif confirmInput.lower() in ["n","no",""]:
+                    elif confirmInput in ["n", "no", ""]:
                         print("STOPPED THE PROCESS....! \n Bye")
                         break
-                    else:print("INVALID INPUT ! TRY AGAIN ")
+                    else:
+                        print("INVALID INPUT! TRY AGAIN")
             else:
                 print("DELETING THE EMPTY DIRECTORY....")
                 time.sleep(0.5)
-                os.rmdir(path) #only for blank ones  
-        except PermissionError:print("PERMISSION NOT ALLOWED !")
-        except Exception as fe :print("ERROR - ",fe)
-        except FileNotFoundError :print("file not found...")
+                os.rmdir(path)  # only for blank ones
+        except PermissionError:
+            print("PERMISSION NOT ALLOWED!")
+        except FileNotFoundError:
+            print("file not found...")
+        except Exception as fe:
+            print("ERROR - ", fe)
         
         
-def overwritee(file_path,eachFile):
+def overwrite(file_path,eachFile):
     try:
         with open(file_path,"wb") as file:
-            file.write(os.urandom(1022333))
+            file.write(os.urandom(1022333)) #customize it 
     except PermissionError:print("NO PERMISSION FOR THIS FILE ",eachFile)
     except FileNotFoundError :print("file not found...")
     except Exception as fe:print("ERROR -",fe)
