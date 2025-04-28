@@ -31,10 +31,10 @@ def main():
         folderEmpytDelete(path,isForce,isoverwriten)
         
         
-def folderEmpytDelete(path,forceDel,overwrite):
+def folderEmpytDelete(path,forceDel,overwrite_flag):
         try:
             if forceDel:
-                if overwrite:
+                if overwrite_flag:
                     while True:
                         input1 = input("ARE YOU USING AT YOUR OWN RESPOSNSIBILITY... - ").lower()
                         if input1 in ["yes", "y", "ye"]:
