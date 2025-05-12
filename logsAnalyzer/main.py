@@ -57,5 +57,6 @@ def ipsCalculator(ip_list):
             print(f"⚠️  WARNING: {ip} may be performing a DoS attack!")
             print("-" * 10)
 
-# Run the script
-main()
+# Run the script & make it reusable
+if __name__ == "__main__":
+    main()
