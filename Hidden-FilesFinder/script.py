@@ -44,7 +44,7 @@ def findRecurisve(path,args):
         for root,dir,files in os.walk(path):
             file_exists=True
             for file in files:
-                new_path = os.path.join(root,file)
+                new_path = os.path.join(root,file) #folder-current\files
                 if file[0] == ".":
                     print(f"FOUND - {file} FullPath -{os.path.abspath(new_path)}") #Just for debugging
                     if args.output:save_to_file(file,new_path)

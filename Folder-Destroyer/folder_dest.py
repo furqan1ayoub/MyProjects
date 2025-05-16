@@ -5,22 +5,24 @@ import os
 import shutil
 import sys
 import time
+from colorama import Fore,init,Style
+init(autoreset=True)
 def argParsingFunc():
     parser = argparse.ArgumentParser(description="FOLDER DESTROYER",epilog="syntax - folder_dest.py -p path")
     parser.add_argument("--overwrite",action="store_true",help="Overwrites every File - Danger!")
     parser.add_argument("--force",action="store_true",help="deletes forcefully everything Danger!")
-    parser.add_argument("-p","--path",help="PATH OF THE FOLDER ")
+    parser.add_argument("-p","--path",help="PATH OF THE FOLDER ",required=True)
     return parser.parse_args()
 
 def main():
     args = argParsingFunc()
     path=args.path
     if not args.path:
-        sys.exit("path not specified Error !")
+        sys.exit(Fore.RED + "path not specified Error !")
     if not os.path.exists(path):
-        sys.exit("Folder/Path DOENS'T EXIST")
+        sys.exit(Fore.RED +"Folder/Path DOENS'T EXIST")
     if not os.path.isdir(path):
-        sys.exit("PATH IS A FILE not dir...")
+        sys.exit(Fore.RED + "PATH IS A FILE not dir...")
     if args.path and os.path.isdir(path) :
         isForce=False
         isoverwriten = False
@@ -36,7 +38,7 @@ def folderEmpytDelete(path,forceDel,overwrite_flag):
             if forceDel:
                 if overwrite_flag:
                     while True:
-                        input1 = input("ARE YOU USING AT YOUR OWN RESPOSNSIBILITY... - ").lower()
+                        input1 = input(Fore.RED +"ARE YOU USING AT YOUR OWN RESPOSNSIBILITY... - ").lower()
                         if input1 in ["yes", "y", "ye"]:
                             isOverwritted = True
                             for root, dirs, files in os.walk(path):
@@ -45,41 +47,41 @@ def folderEmpytDelete(path,forceDel,overwrite_flag):
                                     overwrite(new_path, eachFile)
                             break
                         elif input1 in ["no", "n", ""]:
-                            print("STOPPED THE OVERWRITING FUNCTION!")
+                            print(Fore.GREEN +"STOPPED THE OVERWRITING FUNCTION!")
                             break
                         else:
-                            print("INVALID INPUT...")
+                            print(Fore.RED +"INVALID INPUT...")
                 while True:
                     confirmInput = input("Are you sure you want to delete?  y/n - ").lower()
                     if confirmInput in ["y", "ye", "yes"]:
-                        print("DELETING.....")
+                        print(Fore.GREEN +"DELETING.....")
                         time.sleep(0.5)
                         shutil.rmtree(path)  # all
                         if isOverwritted:
-                            print("1)changed content \n2)deleted the folder !! (hope used in your own env) .....")
+                            print(Fore.CYAN + "1)changed content \n2)deleted the folder !! (hope used in your own env) .....")
                         break
                     elif confirmInput in ["n", "no", ""]:
-                        print("STOPPED THE PROCESS....! \n Bye")
+                        print(Fore.RED + "STOPPED THE PROCESS....! \n Bye")
                         break
                     else:
-                        print("INVALID INPUT! TRY AGAIN")
+                        print(Fore.RED + "INVALID INPUT! TRY AGAIN")
             else:
                 print("DELETING THE EMPTY DIRECTORY....")
                 time.sleep(0.5)
                 os.rmdir(path)  # only for blank ones
         except PermissionError:
-            print("PERMISSION NOT ALLOWED!")
+            print(Fore.RED +"PERMISSION NOT ALLOWED!")
         except FileNotFoundError:
             print("file not found...")
         except Exception as fe:
-            print("ERROR - ", fe)
+            print(Fore.RED + "ERROR - ", fe)
         
         
 def overwrite(file_path,eachFile):
     try:
         with open(file_path,"wb") as file:
             file.write(os.urandom(1022333)) #customize it 
-    except PermissionError:print("NO PERMISSION FOR THIS FILE ",eachFile)
-    except FileNotFoundError :print("file not found...")
+    except PermissionError:print(Fore.RED + "NO PERMISSION FOR THIS FILE ",eachFile)
+    except FileNotFoundError :print(Fore.RED + "file not found...")
     except Exception as fe:print("ERROR -",fe)
 main()
